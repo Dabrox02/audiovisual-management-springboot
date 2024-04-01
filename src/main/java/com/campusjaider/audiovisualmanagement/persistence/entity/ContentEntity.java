@@ -47,7 +47,7 @@ public class ContentEntity {
     private GenderEntity genderEntity1;
 
     @ManyToOne
-    @JoinColumn(name = "gender2", nullable = false)
+    @JoinColumn(name = "gender2", nullable = true)
     private GenderEntity genderEntity2;
 
     @ManyToOne
