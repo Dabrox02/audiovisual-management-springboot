@@ -1,10 +1,12 @@
 package com.campusjaider.audiovisualmanagement.web.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.campusjaider.audiovisualmanagement.domain.service.ContentService;
+import com.campusjaider.audiovisualmanagement.domain.service.UserService;
 import com.campusjaider.audiovisualmanagement.persistence.dto.ContentDTO;
+import com.campusjaider.audiovisualmanagement.persistence.dto.UserDTO;
 import com.campusjaider.audiovisualmanagement.persistence.entity.ContentEntity;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -27,10 +31,18 @@ public class ContentController {
     @Autowired
     private ContentService contentService;
 
-    @GetMapping("path")
-    public ResponseEntity<?> getAllById(@RequestParam String username, @RequestParam String password) {
-        return null;
+    @Autowired
+    private UserService userService;
 
+    @GetMapping("/")
+    public ResponseEntity<?> getAllById(@RequestParam String nameUser, @RequestParam String password) {
+        UserDTO userDTO = userService.loginUser(nameUser, password);
+        if (userDTO == null) {
+            throw new UsernameNotFoundException("User or Password Invalid");
+        } else {
+            List<ContentEntity> listContentEntities = contentService.getAllById(userDTO.getUserId());
+            return ResponseEntity.ok().body(listContentEntities);
+        }
     }
 
     @PostMapping("/add")

@@ -1,5 +1,7 @@
 package com.campusjaider.audiovisualmanagement.domain.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -101,6 +103,16 @@ public class ContentServiceImpl implements ContentService {
                 contentEntity.setTypeContentEntity(typeContentEntity);
                 return contentRepository.save(contentEntity);
             }
+        }
+        return null;
+    }
+
+    @Override
+    public List<ContentEntity> getAllById(Integer userId) {
+        UserEntity userEntity = userRepository.findById(userId).orElse(null);
+        if (userEntity != null) {
+            List<ContentEntity> listContentEntities = contentRepository.findByUserEntity(userEntity);
+            return listContentEntities;
         }
         return null;
     }

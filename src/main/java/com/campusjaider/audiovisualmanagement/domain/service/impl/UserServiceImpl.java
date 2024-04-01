@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
             if (passwordEncoder.matches(password, user.getPassword())) {
                 String token = jwtAuthtenticationConfig.getJWTToken(user.getNameUser());
                 UserDTO userDTO = new UserDTO();
+                userDTO.setUserId(user.getUserId());
                 userDTO.setNameUser(user.getNameUser());
                 userDTO.setEmailUser(user.getEmailUser());
                 userDTO.setToken(token);
