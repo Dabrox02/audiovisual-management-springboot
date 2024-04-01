@@ -116,6 +116,25 @@ http://localhost:8080/doc/swagger-ui/index.html
   <img src="imagesReadme/install4.PNG" style="width: 600px">
 </div>
 
+## Usage 
+
+1. Create a user in swagger using the /user/register endpoint
+
+<div align="center">
+  <img src="imagesReadme/usage1.PNG" style="width: 600px">
+</div>
+
+2. Generate a token using the /user/login endpoint with the previously created credentials
+
+<div align="center">
+  <img src="imagesReadme/usage2.PNG" style="width: 600px">
+</div>
+
+3. Enter the generated token in authorization token in swagger
+
+<div align="center">
+  <img src="imagesReadme/usage3.PNG" style="width: 600px">
+</div>
 
 ## Api Reference
 
