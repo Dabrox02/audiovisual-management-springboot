@@ -1,13 +1,13 @@
-package com.campusjaider.gestionaudivisuales;
+package com.campusjaider.audiovisualmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GestionAudivisualesApplication {
+public class AudiovisualManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GestionAudivisualesApplication.class, args);
+		SpringApplication.run(AudiovisualManagementApplication.class, args);
 	}
 
 }
