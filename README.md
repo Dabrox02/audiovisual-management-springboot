@@ -58,6 +58,13 @@ The database management system chosen for the project was mySQL, which is very f
 - [Table Creation](db/db_manage_audivisual.sql)
 - [Insert statements](src/main/resources/data.sql)
 
+# Project Structure
+A layer model was used, separating them into domain, web and persistence, each of these layers has its own function.
+
+<div align="center">
+  <img src="imagesReadme/project_structure.PNG" style="width: 400px">
+</div>
+
 ## Installation and Execution
 
 1. Clone this repository to your local machine.
