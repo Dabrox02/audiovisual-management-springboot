@@ -14,6 +14,8 @@ import com.campusjaider.audiovisualmanagement.persistence.converter.Converter;
 import com.campusjaider.audiovisualmanagement.persistence.dto.UserDTO;
 import com.campusjaider.audiovisualmanagement.persistence.entity.UserEntity;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
     JWTAuthorizationFilter jwtAuthorizationFilter;
 
     @Override
+    @Transactional
     public UserDTO loginUser(String nameUser, String password) {
         UserEntity user = userRepository.findByNameUser(nameUser).orElse(null);
 
@@ -47,6 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDTO registerUser(UserDTO userDTO) throws ReflectiveOperationException {
         try {
             userDTO.setUserId(null);
@@ -68,9 +72,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Boolean deleteUser(String nameUser, String password) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+        UserDTO user = loginUser(nameUser, password);
+        if (user != null) {
+            userRepository.deleteByNameUser(nameUser);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

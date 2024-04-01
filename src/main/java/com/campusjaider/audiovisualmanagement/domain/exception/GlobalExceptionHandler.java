@@ -18,6 +18,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler({ InvalidOperationException.class })
+    @ResponseStatus(HttpStatus.NOT_IMPLEMENTED)
+    public ResponseEntity<Object> handleInvalidOperationException(InvalidOperationException ex, WebRequest web) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), web.getDescription(false));
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_IMPLEMENTED);
+    }
+
     @ExceptionHandler({ UsernameNotFoundException.class })
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest webRequest) {
