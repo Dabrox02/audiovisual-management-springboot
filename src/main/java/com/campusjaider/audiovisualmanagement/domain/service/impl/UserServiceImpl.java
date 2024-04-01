@@ -61,7 +61,6 @@ public class UserServiceImpl implements UserService {
             if (userEntityResponse != null) {
                 UserDTO userDtoResponse = Converter.convertTo(userEntityResponse, UserDTO.class);
                 userDtoResponse.setPassword(null);
-
                 return userDtoResponse;
             }
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException

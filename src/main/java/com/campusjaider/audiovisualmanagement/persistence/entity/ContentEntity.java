@@ -54,4 +54,84 @@ public class ContentEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
+    public Integer getContentId() {
+        return this.contentId;
+    }
+
+    public void setContentId(Integer contentId) {
+        this.contentId = contentId;
+    }
+
+    public String getNameContent() {
+        return this.nameContent;
+    }
+
+    public void setNameContent(String nameContent) {
+        this.nameContent = nameContent;
+    }
+
+    public StatusDisplayEnum getStatusDisplay() {
+        return this.statusDisplay;
+    }
+
+    public void setStatusDisplay(StatusDisplayEnum statusDisplay) {
+        this.statusDisplay = statusDisplay;
+    }
+
+    public BigDecimal getQualification() {
+        return this.qualification;
+    }
+
+    public void setQualification(BigDecimal qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getComment() {
+        return this.comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public TypeContentEntity getTypeContentEntity() {
+        return this.typeContentEntity;
+    }
+
+    public void setTypeContentEntity(TypeContentEntity typeContentEntity) {
+        this.typeContentEntity = typeContentEntity;
+    }
+
+    public PlatformEntity getPlatformEntity() {
+        return this.platformEntity;
+    }
+
+    public void setPlatformEntity(PlatformEntity platformEntity) {
+        this.platformEntity = platformEntity;
+    }
+
+    public GenderEntity getGenderEntity1() {
+        return this.genderEntity1;
+    }
+
+    public void setGenderEntity1(GenderEntity genderEntity1) {
+        this.genderEntity1 = genderEntity1;
+    }
+
+    public GenderEntity getGenderEntity2() {
+        return this.genderEntity2;
+    }
+
+    public void setGenderEntity2(GenderEntity genderEntity2) {
+        this.genderEntity2 = genderEntity2;
+    }
+
+    public UserEntity getUserEntity() {
+        return this.userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
 }

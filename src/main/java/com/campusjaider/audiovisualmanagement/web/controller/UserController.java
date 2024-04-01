@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,11 +38,18 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) throws ReflectiveOperationException {
+    public ResponseEntity<?> registerUser(@RequestParam("nameUser") String nameUser,
+            @RequestParam("password") String password, @RequestParam("emailUser") String emailUser)
+            throws ReflectiveOperationException {
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(userDTO.getEmailUser());
+        Matcher matcher = pattern.matcher(emailUser);
         if (matcher.matches()) {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setNameUser(nameUser);
+            userDTO.setEmailUser(emailUser);
+            userDTO.setPassword(password);
+
             UserDTO userRegister = userService.registerUser(userDTO);
             if (userRegister == null) {
                 throw new Error("Cannot create user");

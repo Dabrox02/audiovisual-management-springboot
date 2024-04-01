@@ -19,24 +19,31 @@ VALUES
 (NULL,"podcast"),
 (NULL,"videogame");
 
-INSERT INTO `db_manage_audiovisual`.`tbl_platform`(`platform_id`,`type_content_id`,`name_platform`)
+INSERT INTO `db_manage_audiovisual`.`tbl_platform`(`platform_id`,`name_platform`)
 VALUES
-(NULL, 1, "netflix"),
-(NULL, 1, "hbo max"),
-(NULL, 1, "disney plus"),
-(NULL, 1, "star plus"),
-(NULL, 2, "netflix"),
-(NULL, 2, "hbo max"),
-(NULL, 2, "disney plus"),
-(NULL, 2, "star plus"),
-(NULL, 3, "physical"),
-(NULL, 3, "e-book"),
-(NULL, 4, "spotify"),
-(NULL, 4, "youtube"),
-(NULL, 4, "deezer"),
-(NULL, 4, "google podcasts"),
-(NULL, 5, "steam"),
-(NULL, 5, "epicgames"),
-(NULL, 5, "origin"),
-(NULL, 5, "blizzard");
+(NULL, "netflix"),
+(NULL, "hbo max"),
+(NULL, "physical"),
+(NULL, "e-book"),
+(NULL, "spotify"),
+(NULL, "youtube"),
+(NULL, "steam"),
+(NULL, "epicgames");
 
+INSERT INTO `db_manage_audiovisual`.`tbl_platform_type_content`(`platforms_platform_id`,`type_contents_type_content_id`)
+VALUES
+(1,1),
+(1,2),
+(2,1),
+(2,2),
+(3,3),
+(3,5),
+(4,3),
+(5,4),
+(6,4),
+(7,5),
+(8,5);
+
+INSERT INTO `db_manage_audiovisual`.`tbl_user`(`user_id`,`name_user`,`email_user`,`password`)
+VALUES
+(NULL,'jaider','jaider@email.com','$2a$10$hzR3/55Gwt7GzfDs54MzguYVr3JDCdFw0JktkQDSQy89GFJLgxGmu');

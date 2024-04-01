@@ -1,12 +1,15 @@
 package com.campusjaider.audiovisualmanagement.persistence.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,8 +23,33 @@ public class PlatformEntity {
     @Column(nullable = false, length = 100)
     private String namePlatform;
 
-    @ManyToOne
-    @JoinColumn(name = "type_content_id", nullable = false)
-    private TypeContentEntity typeContentEntity;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tbl_platform_type_content")
+    private List<TypeContentEntity> typeContents;
+
+
+    public Integer getPlatformId() {
+        return this.platformId;
+    }
+
+    public void setPlatformId(Integer platformId) {
+        this.platformId = platformId;
+    }
+
+    public String getNamePlatform() {
+        return this.namePlatform;
+    }
+
+    public void setNamePlatform(String namePlatform) {
+        this.namePlatform = namePlatform;
+    }
+
+    public List<TypeContentEntity> getTypeContents() {
+        return this.typeContents;
+    }
+
+    public void setTypeContents(List<TypeContentEntity> typeContents) {
+        this.typeContents = typeContents;
+    }
 
 }

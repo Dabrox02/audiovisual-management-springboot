@@ -1,5 +1,7 @@
 package com.campusjaider.audiovisualmanagement.persistence.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -8,6 +10,7 @@ public class UserDTO {
     private String nameUser;
     private String emailUser;
     private String password;
+    private List<ContentDTO> content;
     private String token;
 
     public Integer getUserId() {
@@ -48,6 +51,14 @@ public class UserDTO {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public List<ContentDTO> getContent() {
+        return this.content;
+    }
+
+    public void setContent(List<ContentDTO> content) {
+        this.content = content;
     }
 
 }
