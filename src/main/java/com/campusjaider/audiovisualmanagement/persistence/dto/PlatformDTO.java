@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class PlatformDTO {
     private Integer platformId;
     private String namePlatform;
-    private Integer typeContentId;
 
     public Integer getPlatformId() {
         return this.platformId;
@@ -22,14 +21,6 @@ public class PlatformDTO {
 
     public void setNamePlatform(String namePlatform) {
         this.namePlatform = namePlatform;
-    }
-
-    public Integer getTypeContentId() {
-        return this.typeContentId;
-    }
-
-    public void setTypeContentId(Integer typeContentId) {
-        this.typeContentId = typeContentId;
     }
 
 }
