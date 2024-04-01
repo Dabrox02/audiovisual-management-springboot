@@ -8,6 +8,7 @@ public class UserDTO {
     private String nameUser;
     private String emailUser;
     private String password;
+    private String token;
 
     public Integer getUserId() {
         return this.userId;
@@ -39,6 +40,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return this.token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }
