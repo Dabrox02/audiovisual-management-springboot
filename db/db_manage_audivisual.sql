@@ -1,45 +1,53 @@
 CREATE TABLE `tbl_user` (
-  `id_user` int PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int PRIMARY KEY AUTO_INCREMENT,
   `name_user` varchar(50) UNIQUE NOT NULL,
   `email_user` varchar(100) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL
 );
 
 CREATE TABLE `tbl_content` (
-  `id_content` int PRIMARY KEY AUTO_INCREMENT,
-  `name_content` varchar(100),
+  `content_id` int PRIMARY KEY AUTO_INCREMENT,
+  `name_content` varchar(100) NOT NULL,
   `status_display` ENUM ('pending', 'watching', 'finished', 'abandoned', 'on pause') NOT NULL,
-  `id_type_content` int NOT NULL,
-  `id_platform` int NOT NULL,
+  `type_content_id` int NOT NULL,
+  `platform_id` int NOT NULL,
   `gender1` int NOT NULL,
   `gender2` int,
   `qualification` decimal(5,1),
   `comment` varchar(500),
-  `id_user` int NOT NULL
+  `user_id` int NOT NULL
 );
 
 CREATE TABLE `tbl_gender` (
-  `id_gender` int PRIMARY KEY AUTO_INCREMENT,
-  `name_gender` varchar(50) NOT NULL
+  `gender_id` int PRIMARY KEY AUTO_INCREMENT,
+  `name_gender` varchar(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE `tbl_type_content` (
-  `id_type_content` int PRIMARY KEY AUTO_INCREMENT,
-  `name_type_content` varchar(60) NOT NULL
+  `type_content_id` int PRIMARY KEY AUTO_INCREMENT,
+  `name_type_content` varchar(60) UNIQUE NOT NULL
 );
 
 CREATE TABLE `tbl_platform` (
-  `id_platform` int PRIMARY KEY AUTO_INCREMENT,
-  `name_platform` varchar(100) NOT NULL,
-  `id_type_content` int NOT NULL
+  `platform_id` int PRIMARY KEY AUTO_INCREMENT,
+  `name_platform` varchar(100) NOT NULL
 );
 
-ALTER TABLE `tbl_content` ADD FOREIGN KEY (`id_user`) REFERENCES `tbl_user` (`id_user`);
+CREATE TABLE `tbl_platform_type_content` (
+  `platform_id` int NOT NULL,
+  `type_content_id` int NOT NULL
+);
 
-ALTER TABLE `tbl_content` ADD FOREIGN KEY (`gender1`) REFERENCES `tbl_gender` (`id_gender`);
+ALTER TABLE `tbl_content` ADD FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`);
 
-ALTER TABLE `tbl_content` ADD FOREIGN KEY (`gender2`) REFERENCES `tbl_gender` (`id_gender`);
+ALTER TABLE `tbl_content` ADD FOREIGN KEY (`gender1`) REFERENCES `tbl_gender` (`gender_id`);
 
-ALTER TABLE `tbl_content` ADD FOREIGN KEY (`id_type_content`) REFERENCES `tbl_type_content` (`id_type_content`);
+ALTER TABLE `tbl_content` ADD FOREIGN KEY (`gender2`) REFERENCES `tbl_gender` (`gender_id`);
 
-ALTER TABLE `tbl_content` ADD FOREIGN KEY (`id_platform`) REFERENCES `tbl_platform` (`id_platform`);
+ALTER TABLE `tbl_content` ADD FOREIGN KEY (`type_content_id`) REFERENCES `tbl_type_content` (`type_content_id`);
+
+ALTER TABLE `tbl_content` ADD FOREIGN KEY (`platform_id`) REFERENCES `tbl_platform` (`platform_id`);
+
+ALTER TABLE `tbl_platform_type_content` ADD FOREIGN KEY (`platform_id`) REFERENCES `tbl_platform` (`platform_id`);
+
+ALTER TABLE `tbl_platform_type_content` ADD FOREIGN KEY (`type_content_id`) REFERENCES `tbl_type_content` (`type_content_id`);
