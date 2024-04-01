@@ -2,6 +2,8 @@ package com.campusjaider.audiovisualmanagement.persistence.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ContentEntity> contentEntity;
 
     public Integer getUserId() {

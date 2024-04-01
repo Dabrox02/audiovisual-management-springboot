@@ -2,6 +2,8 @@ package com.campusjaider.audiovisualmanagement.persistence.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,9 +26,9 @@ public class PlatformEntity {
     private String namePlatform;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonBackReference
     @JoinTable(name = "tbl_platform_type_content")
     private List<TypeContentEntity> typeContents;
-
 
     public Integer getPlatformId() {
         return this.platformId;

@@ -2,6 +2,9 @@ package com.campusjaider.audiovisualmanagement.persistence.entity;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,17 +31,19 @@ public class ContentEntity {
     @Column(nullable = false)
     private StatusDisplayEnum statusDisplay;
 
-    @Column(nullable = false, precision = 3, scale = 1)
+    @Column(nullable = true, precision = 3, scale = 1)
     private BigDecimal qualification;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = true, length = 500)
     private String comment;
 
     @ManyToOne
     @JoinColumn(name = "type_content_id", nullable = false)
+    @JsonManagedReference
     private TypeContentEntity typeContentEntity;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "platform_id", nullable = false)
     private PlatformEntity platformEntity;
 
@@ -47,10 +52,12 @@ public class ContentEntity {
     private GenderEntity genderEntity1;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "gender2", nullable = true)
     private GenderEntity genderEntity2;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
