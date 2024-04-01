@@ -26,7 +26,7 @@ public class PlatformController {
     @PostMapping("/add")
     public ResponseEntity<?> saveGender(@RequestBody PlatformDTO platformDTO) {
         if (!(platformDTO.getNamePlatform() == null) && !(platformDTO.getNamePlatform().isBlank())) {
-            PlatformDTO platformResponse = platformService.saveGender(platformDTO.getNamePlatform());
+            PlatformDTO platformResponse = platformService.savePlatform(platformDTO.getNamePlatform());
             return ResponseEntity.ok().body(platformResponse);
         }
         Map<String, Object> response = new HashMap<>();

@@ -15,7 +15,7 @@ public class PlatformServiceImpl implements PlatformService {
     private PlatformRepository platformRepository;
 
     @Override
-    public PlatformDTO saveGender(String namePlatform) {
+    public PlatformDTO savePlatform(String namePlatform) {
         PlatformEntity platformEntity = new PlatformEntity();
         platformEntity.setNamePlatform(namePlatform);
         PlatformEntity platformEntityResponse = platformRepository.save(platformEntity);
