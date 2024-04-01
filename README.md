@@ -53,6 +53,11 @@ The database management system chosen for the project was mySQL, which is very f
   <img src="imagesReadme/tables_audiovisual_management.png" style="width: 400px">
 </div>
 
+## SQL Statements
+
+- [Table Creation](db/db_manage_audivisual.sql)
+- [Insert statements](src/main/resources/data.sql)
+
 ## Installation and Execution
 
 1. Clone this repository to your local machine.
@@ -70,7 +75,7 @@ git switch main
 
 <div align="center">
   <h3>Application properties Mysql</h3>
-  <img src="imagesReadme/install1.png" style="width: 400px">
+  <img src="imagesReadme/install1.PNG" style="width: 400px">
 </div>
 
 - *spring.datasource.url=jdbc:mysql://localhost:3306/db_manage_audiovisual* you change *db_manage_audiovisual* to the name of the database you defined
@@ -81,14 +86,14 @@ If you are using another database management system, you must find the correspon
 
 <div align="center">
   <h3>Mysql dependency</h3>
-  <img src="imagesReadme/install2.png" style="width: 400px">
+  <img src="imagesReadme/install2.PNG" style="width: 400px">
 </div>
 
 4. You can use the api documentation that is provided by swagger. With this documentation you can test the queries if you want to 
 
 <div align="center">
    <h3>Swagger settings in application properties</h3>
-  <img src="imagesReadme/install3.png" style="width: 400px">
+  <img src="imagesReadme/install3.PNG" style="width: 400px">
 </div>
 
 You just have to enter the following link in your web browser
@@ -97,21 +102,12 @@ You just have to enter the following link in your web browser
 http://localhost:8080/doc/swagger-ui/index.html
 ```
 
-<div align="center">
-  <h3>Swagger view</h3>
-  <img src="imagesReadme/install4.png" style="width: 600px">
-</div>
-
-
 5. Start the application, execute 'Run Application'.
 
 <div align="center">
-  <h3>Run Application</h3> 
-  <img src="imagesReadme/run_project.png" style="width: 600px">
+  <h3>Swagger view</h3>
+  <img src="imagesReadme/install4.PNG" style="width: 600px">
 </div>
-
-
-
 
 
 ## Api Reference
