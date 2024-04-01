@@ -6,7 +6,9 @@ import com.campusjaider.audiovisualmanagement.persistence.dto.ContentDTO;
 import com.campusjaider.audiovisualmanagement.persistence.entity.ContentEntity;
 
 public interface ContentService {
-    List<ContentEntity> getAllById(Integer contentId);
+    List<ContentEntity> getAllById(Integer userId);
+
     ContentEntity saveContent(ContentDTO contentDTO);
+
     ContentEntity updateContent(ContentDTO contentDTO);
 }

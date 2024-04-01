@@ -27,7 +27,8 @@ class WebSecurityConfig {
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(HttpMethod.POST, Constants.AUTH).permitAll()
+                        .requestMatchers(HttpMethod.POST, Constants.AUTH_POST).permitAll()
+                        .requestMatchers(HttpMethod.DELETE, Constants.AUTH_DELETE).permitAll()
                         .requestMatchers(HttpMethod.GET, Constants.SWAGGER).permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement((session) -> session

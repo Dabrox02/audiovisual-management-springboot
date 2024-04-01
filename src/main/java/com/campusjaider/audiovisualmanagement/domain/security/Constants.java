@@ -9,7 +9,8 @@ import java.security.Key;
 public class Constants {
 
     // Spring Security
-    public static final String[] AUTH = { "/user/login", "/user/register", "/user/delete" };
+    public static final String[] AUTH_POST = { "/user/login", "/user/register", "/user/delete" };
+    public static final String[] AUTH_DELETE = { "/user/delete" };
     public static final String[] SWAGGER = {
             "/doc/**",
             "/swagger-ui.html",
