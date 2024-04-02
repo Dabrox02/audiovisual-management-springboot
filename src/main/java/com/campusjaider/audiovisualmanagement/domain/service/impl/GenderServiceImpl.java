@@ -1,5 +1,7 @@
 package com.campusjaider.audiovisualmanagement.domain.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,12 @@ public class GenderServiceImpl implements GenderService {
         GenderEntity genderEntity = new GenderEntity();
         genderEntity.setNameGender(nameGender);
         return genderRepository.save(genderEntity);
+    }
+
+    @Override
+    public List<GenderEntity> getAllGender() {
+        List<GenderEntity> genderEntities = genderRepository.findAll();
+        return genderEntities;
     }
 
 }

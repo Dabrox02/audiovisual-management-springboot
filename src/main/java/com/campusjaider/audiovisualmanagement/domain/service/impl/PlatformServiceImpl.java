@@ -1,5 +1,7 @@
 package com.campusjaider.audiovisualmanagement.domain.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,12 @@ public class PlatformServiceImpl implements PlatformService {
         platformResponse.setPlatformId(platformEntityResponse.getPlatformId());
         platformResponse.setNamePlatform(platformEntityResponse.getNamePlatform());
         return platformResponse;
+    }
+
+    @Override
+    public List<PlatformEntity> getAllPlatform() {
+        List<PlatformEntity> platformEntities = platformRepository.findAll();
+        return platformEntities;
     }
 
 }
